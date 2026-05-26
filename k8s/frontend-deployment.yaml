@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forgemind-frontend
+  namespace: forgemind
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: forgemind-frontend
+  template:
+    metadata:
+      labels:
+        app: forgemind-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: ghcr.io/forgemind-ai/frontend:latest
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: forgemind-frontend
+  namespace: forgemind
+spec:
+  selector:
+    app: forgemind-frontend
+  ports:
+    - port: 3000
+      targetPort: 3000

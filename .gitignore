@@ -1,0 +1,14 @@
+.next/
+node_modules/
+.npm-cache/
+dev-server*.log
+__pycache__/
+*.pyc
+.venv/
+.env
+dist/
+build/
+demo-workspace/
+postgres_data/
+qdrant_data/
+grafana_data/

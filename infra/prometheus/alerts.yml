@@ -1,0 +1,10 @@
+groups:
+  - name: forgemind-agent-slo
+    rules:
+      - alert: HighAgentRunLatency
+        expr: histogram_quantile(0.95, rate(agent_run_duration_seconds_bucket[5m])) > 30
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: Agent p95 latency exceeded 30 seconds
